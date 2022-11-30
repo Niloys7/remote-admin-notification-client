@@ -12,8 +12,8 @@
  *
  * @package   WPI Remote Dashboard Notifications
  * @license   GPL-2.0+
- * @link      http://wordpress.org/plugins/remote-dashboard-notifications/
- * @link 	  https://github.com/ThemeAvenue/Remote-Dashboard-Notifications
+ *  http://wordpress.org/plugins/remote-dashboard-notifications/
+ *  https://github.com/ThemeAvenue/Remote-Dashboard-Notifications
  * @copyright 2016 ThemeAvenue
  *
  * This class refactor by Niloy
@@ -125,7 +125,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'awesome-support' ), '3.2.5' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpi-remote-notice' ), '3.2.5' );
 		}
 
 		/**
@@ -136,7 +136,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'awesome-support' ), '3.2.5' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpi-remote-notice' ), '3.2.5' );
 		}
 
 		/**

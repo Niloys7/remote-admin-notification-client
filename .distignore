@@ -1,3 +1,5 @@
 ran-client.php
 .DS_Store
 js/.DS_Store
+.distignore
+.gitattributes

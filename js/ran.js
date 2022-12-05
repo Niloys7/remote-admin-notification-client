@@ -29,7 +29,7 @@
                     notices: data.rdn_fetch,
                     nonce: wpi_ran.ajax_nonce
                 }, function (data) {
-                    console.log(data);  // Enable it for Debug
+                    //    console.log(data);  // Enable it for Debug
                 });
 
 

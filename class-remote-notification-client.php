@@ -472,7 +472,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 */
 		protected function create_admin_notice( $contents, $class, $dismiss ) {?>
 			<div class="<?php echo esc_attr( $class ); ?>">
-				<p><?php echo html_entity_decode( $contents ); ?></p>
+				<?php echo html_entity_decode( $contents ); ?>
 				<button type="button" data-notice_id="<?php echo esc_attr( $dismiss ); ?>" class="rn-dismiss-btn notice-dismiss" title="<?php _e( 'Dismiss notification', 'remote-notifications' );?>"><span class="screen-reader-text">Dismiss this notice.</span></button>
 
 			</div>
@@ -683,6 +683,8 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 			$body = json_decode( $body );
 
 			if ( is_null( $body ) ) {
+				
+				
 				return new WP_Error( 'json_decode_error', __( 'Cannot decode the response content', 'remote-notifications' ) );
 			}
 

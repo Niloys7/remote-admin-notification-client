@@ -661,7 +661,11 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 * @return string|WP_Error
 		 */
 		protected function remote_get_notification( $notification ) {
+			if ( get_transient( 'wpi_check_ran_' . $notification['notice_id'] ) ) {
+				return new WP_Error( 'transient_response', __( 'Can\'t run before the transient expired', 'remote-notifications' ) );
+			}
 
+			set_transient( 'wpi_check_ran_' . $notification['notice_id'], 1, 3 * HOUR_IN_SECONDS );
 			/* Query the server */
 			$response = wp_remote_get( $this->build_query_url( $notification['server_url'], $this->get_payload( $notification ) ), array( 'timeout' => apply_filters( 'rn_http_request_timeout', 5 ) ) );
 
@@ -683,8 +687,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 			$body = json_decode( $body );
 
 			if ( is_null( $body ) ) {
-				
-				
+
 				return new WP_Error( 'json_decode_error', __( 'Cannot decode the response content', 'remote-notifications' ) );
 			}
 

@@ -18,6 +18,7 @@
  *
  * This class refactor by Niloy
  * @link https://github.com/Niloys7/remote-admin-notification-client
+ * @since 2022
  */
 
 // If this file is called directly, abort.
@@ -41,18 +42,18 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 * @since 1.3.0
 		 * @var string
 		 */
-		public $wordpress_version_required = '4.1';
+		public $wordpress_version_required = '5.0';
 
 		/**
 		 * Required version of PHP.
 		 *
 		 * Follow WordPress latest requirements and require
-		 * PHP version 5.6 at least.
+		 * PHP version 7.4 at least.
 		 *
 		 * @since 1.3.0
 		 * @var string
 		 */
-		public $php_version_required = '5.6';
+		public $php_version_required = '7.4';
 
 		/**
 		 * Holds all the registered notifications
@@ -501,7 +502,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 				wp_die( 'oops!' );
 			}
 
-			if ( isset( $_POST['dismiss'] ) && $_POST['dismiss'] == 1 ) {
+			if ( isset( $_POST['dismiss'] ) && 1 == $_POST['dismiss'] ) {
 
 				global $current_user;
 

@@ -1,8 +1,6 @@
 # Remote Dashboard Notifications WordPress Client
-[![Latest Stable Version](http://poser.pugx.org/niloys7/remote-admin-notification-client/v)](https://packagist.org/packages/niloys7/remote-admin-notification-client)
-[![Total Downloads](http://poser.pugx.org/niloys7/remote-admin-notification-client/downloads)](https://packagist.org/packages/niloys7/remote-admin-notification-client)
+[![PHP Version Require](http://poser.pugx.org/niloys7/remote-admin-notification-client/require/php)](https://packagist.org/packages/niloys7/remote-admin-notification-client)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-Admin Notification library client fo WordPress Plugins & Theme
 
 ## How it works
 
@@ -25,7 +23,7 @@ The following has to be understood before you can integrate this feature in your
 
 ### Integration steps
 
-Run `composer require niloys7/remote-admin-notification-client`
+Run `composer require niloys7/remote-admin-notification-client dev-main`
 
 Alternatively, clone or download this repo into the `inc/` folder in your plugin, and include/require the `class-remote-notification-client.php;` file like so
 

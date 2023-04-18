@@ -9,8 +9,15 @@
             "email": "niloys7live@gmail.com"
         }
     ],
+    "prefer-stable": true,
     "require": {
-        "php": "^7.0||^8.0"
+        "php": ">=7.4"
+    },
+   
+    "autoload": {
+        "classmap": [
+            "class-remote-notification-client.php"
+        ]
     }
     
 }

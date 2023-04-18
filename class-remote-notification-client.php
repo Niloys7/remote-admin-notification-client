@@ -16,22 +16,22 @@
  *  https://github.com/ThemeAvenue/Remote-Dashboard-Notifications
  * @copyright 2016 ThemeAvenue
  *
- * This class refactor by Niloy
+ * This class refactor and modify by Niloy
  * @link https://github.com/Niloys7/remote-admin-notification-client
  * @since 2022
  */
 
 // If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
+if ( !class_exists( 'NS7_RDNC' ) ) {
 
-	final class WPI_Remote_Dashboard_Notifications_Client {
+	final class NS7_RDNC {
 
 		/**
-		 * @var WPI_Remote_Dashboard_Notifications_Client Holds the unique instance
+		 * @var NS7_RDNC Holds the unique instance
 		 * @since 1.3.0
 		 */
 		private static $instance;
@@ -67,12 +67,12 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 		 * Instantiate and return the unique object
 		 *
 		 * @since     1.2.0
-		 * @return object WPI_Remote_Dashboard_Notifications_Client Unique instance
+		 * @return object NS7_RDNC Unique instance
 		 */
 		public static function instance() {
 
 			if ( !isset( self::$instance ) && !( self::$instance instanceof Awesome_Support ) ) {
-				self::$instance = new WPI_Remote_Dashboard_Notifications_Client;
+				self::$instance = new NS7_RDNC;
 				self::$instance->init();
 			}
 
@@ -547,7 +547,20 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 				'ajax_nonce'  => wp_create_nonce( 'ran_nonce' ),
 				'maybe_fetch' => $maybe_fetch,
 			];
-			wp_enqueue_script( 'wpi-ran', plugin_dir_url( __FILE__ ) . 'js/ran.js', ['jquery'] );
+			$js_url        = plugin_dir_url( __FILE__ ) . 'js/ran.js';
+			$composer_path = '/vendor/niloys7/remote-admin-notification-client/js/ran.js';
+
+			/**
+			 * Filter ran.js URL.
+			 *
+			 * @since 1.0
+			 *
+			 * @param string $js_url URL to the Javascript file.
+			 * @param string $composer_path Relative path of Javascript file from composer install.
+			 */
+			$js_url = apply_filters( 'cix_ran_js_url', $js_url, $composer_path );
+
+			wp_enqueue_script( 'wpi-ran', $js_url, ['jquery'] );
 			wp_localize_script( 'wpi-ran', 'wpi_ran', $data );
 		}
 
@@ -783,7 +796,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 	/**
 	 * Register a new remote notification
 	 *
-	 * Helper function for registering new notifications through the WPI_Remote_Dashboard_Notifications_Client class
+	 * Helper function for registering new notifications through the NS7_RDNC class
 	 *
 	 * @since 1.3.0
 	 *
@@ -795,7 +808,7 @@ if ( !class_exists( 'WPI_Remote_Dashboard_Notifications_Client' ) ) {
 	 * @return bool|string
 	 */
 	function wpi_rdnc_add_notification( $channel_id, $channel_key, $server, $cache = 6 ) {
-		return WPI_Remote_Dashboard_Notifications_Client::instance()->add_notification( $channel_id, $channel_key, $server, $cache );
+		return NS7_RDNC::instance()->add_notification( $channel_id, $channel_key, $server, $cache );
 	}
 
 }
